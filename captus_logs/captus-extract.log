@@ -1,0 +1,302 @@
+
+
+Starting Captus-assembly: EXTRACT (2026-02-08 20:52:22)
+-------------------------------------------------------
+    Welcome to the marker extraction step of Captus-assembly. In this step, Captus will use Scipio to search within your FASTA assemblies and recover any set of reference proteins provided through '--nuc_refs', '--ptd_refs', and/or '--mit_refs'. Captus includes some reference protein sets to work with Plants like the 'Angiosperms353' protein set for nuclear genes, and two organellar protein reference sets 'SeedPlantsPTD' for plastids, and 'SeedPlantsMIT' for mitochondria.
+    If you have references that are not proteins (e.g. non-coding regions, gene sequences including introns, full mRNAs, etc.) You can provide these miscellaneous DNA references with '--dna_refs' and Captus will use BLAT to find and extract matches in your assemblies.
+    Finally, if you want to explore the usefulness of the contigs that were not hit by any protein or other DNA references after the Captus' extraction process, or simply if you do not have reference sets to test, you can try the option '--cluster_leftovers' to attempt sequence clustering across samples in order to discover homologous markers.
+    For more information, please see https://github.com/edgardomortiz/Captus
+
+           Captus version: v1.6.1
+                  Command: /usr/local/bin/captus extract -a 02_assemblies/ -n Ananas_comosus_AllKits_TargetFile.fasta --max_locus_overlap 99 --threads 30 --ram 50
+                       OS: Linux-4.18.0-553.8.1.el8_10.x86_64-x86_64-with-glibc2.36
+                     Host: node25.cluster
+                 Max. RAM: 50.0GB (out of 1511.6GB)
+             Max. Threads: 30 (out of 192)
+
+             Dependencies:
+                Scipio   : v1.4.1 OK
+                ├─BioPerl: v1.7.8 OK
+                └─YAML   : v1.30 OK
+                BLAT     : v37x1 OK
+                MMseqs2  : not used
+                MAFFT    : not used
+
+         Python libraries:
+                    numpy: v2.3.4 OK
+                   pandas: v2.3.3 OK
+                   plotly: v6.4.0 OK
+
+    Captus assemblies dir: /scratch/tmp/cgranados/mextol_concept/02_assemblies
+                           VALID Captus assemblies directory with 9 samples and 9 'assembly.fasta' files
+
+   Total assemblies found: 9
+
+         Output directory: /scratch/tmp/cgranados/mextol_concept/03_extractions
+                           Output directory successfully created
+
+
+
+Protein and DNA Markers Extraction from FASTA assemblies (2026-02-08 20:52:25)
+------------------------------------------------------------------------------
+    Now Captus will search within your FASTA assemblies for the set of reference proteins provided by '--nuc_refs', '--ptd_refs', and/or '--mit_refs' and extract the sequences both in nucleotide and translated to aminoacid using the specified '--nuc_transtable', '--ptd_transtable' and '--mit_transtable' respectively.
+    Additionally, miscellaneous DNA references provided with '--dna_refs' will also be extracted.
+
+Verifying protein reference sets...
+Translated 'Ananas_comosus_AllKits_TargetFile.fasta' using Genetic Code: 1 [0.469s]
+WARNING: Premature stop codons were found in Ananas_comosus_AllKits_TargetFile.fasta and automatically converted to X
+
+          PROTEIN OPTIONS:
+  Max. loci for Scipio x2: 2000
+  Predict dubious introns: False
+   Concurrent extractions: 7
+       RAM per extraction: 7.1GB
+   Threads per extraction: 4
+
+         Nuclear proteins:
+                reference: /scratch/tmp/cgranados/mextol_concept/Ananas_comosus_AllKits_TargetFile.captus.faa (Translated from Ananas_comosus_AllKits_TargetFile.fasta)
+           reference info: 855 loci, 855 sequences (locus name separator "-" missing in 855 sequences, each sequence taken as a different locus)
+        translation table: 1
+                min_score: 0.13
+             min_identity: 65
+             min_coverage: 20
+          depth_tolerance: 2.0 (min = 10^(log(depth of the contig with best hit in locus) / 2.0))
+
+      Plastidial proteins:
+                reference: not used
+
+   Mitochondrial proteins:
+                reference: not used
+
+
+MISCELLANEOUS DNA OPTIONS:
+                reference: not used
+
+
+           OUTPUT OPTIONS:
+ Ignore depth of coverage: False
+ Disable contig stitching: False
+       Max. locus overlap: 99.0%
+        Paralog tolerance: 1.5
+            Max. paralogs: -1 (Keep all paralogs)
+ Max. separate loci files: 0 (Do not write separate loci files per sample)
+          Overwrite files: False
+           Keep all files: False
+
+       Samples to process: 9
+   Extractions to process: 9 protein and 0 nucleotide
+
+         Nuclear proteins: /scratch/tmp/cgranados/mextol_concept/03_extractions/[Sample_name]__captus-ext/01_coding_NUC
+     Annotated assemblies: /scratch/tmp/cgranados/mextol_concept/03_extractions/[Sample_name]__captus-ext/06_assembly_annotated
+                           (These output directories will be created for each sample)
+
+ Paths to references used: /scratch/tmp/cgranados/mextol_concept/03_extractions/captus-extract_refs.json
+
+Extracting protein-coding markers with Scipio:
+'T1586': recovered 600 nuclear genes (70.2% of 855), 47.7% of total reference length, 218 paralogs found [15.372s]
+'T1422': recovered 699 nuclear genes (81.8% of 855), 56.7% of total reference length, 141 paralogs found [16.603s]
+'T1539': recovered 559 nuclear genes (65.4% of 855), 45.0% of total reference length, 25 paralogs found [12.506s]
+'T1585': recovered 579 nuclear genes (67.7% of 855), 46.4% of total reference length, 325 paralogs found [14.277s]
+'T1425': recovered 700 nuclear genes (81.9% of 855), 57.5% of total reference length, 42 paralogs found [34.805s]
+'Deuterocohnia_longipetala': recovered 548 nuclear genes (64.1% of 855), 69.7% of total reference length, 294 paralogs found [40.222s]
+'SRR13700302': recovered 729 nuclear genes (85.3% of 855), 68.4% of total reference length, 34 paralogs found [48.012s]
+'T1445': recovered 799 nuclear genes (93.5% of 855), 72.8% of total reference length, 39 paralogs found [1m 12.9s (72.870s)]
+'SRR27284165': recovered 810 nuclear genes (94.7% of 855), 86.4% of total reference length, 34 paralogs found [8m 52.9s (532.905s)]
+ └─→ Protein-coding markers: finished processing for 9 extraction(s) [8m 53.2s (533.247s)]
+
+Merging GFFs, summarizing recovery stats, and cleaning up:
+'T1539': GFF annotations and recovery stats merged, unnecessary files removed [1.902s]
+'T1585': GFF annotations and recovery stats merged, unnecessary files removed [2.620s]
+'Deuterocohnia_longipetala': GFF annotations and recovery stats merged, unnecessary files removed [3.042s]
+'T1586': GFF annotations and recovery stats merged, unnecessary files removed [3.452s]
+'T1422': GFF annotations and recovery stats merged, unnecessary files removed [3.861s]
+'T1425': GFF annotations and recovery stats merged, unnecessary files removed [5.617s]
+'T1445': GFF annotations and recovery stats merged, unnecessary files removed [7.113s]
+'SRR13700302': GFF annotations and recovery stats merged, unnecessary files removed [10.105s]
+'SRR27284165': GFF annotations and recovery stats merged, unnecessary files removed [16.679s]
+ └─→ Merged GFF and summary recovery stats created for 9 sample(s) [17.114s]
+
+
+
+Clustering and Extracting Markers Across Samples with MMseqs2/BLAT (2026-02-08 21:01:36)
+----------------------------------------------------------------------------------------
+    Now Captus will cluster the assembly sequences across samples to discover homologous markers. If protein and/or miscellaneous DNA references sequences were extracted in the previous step, the '06_assembly_annotated/leftover_contigs.fasta.gz' files from each sample will be used for clustering, otherwise the '01_assembly/assembly.fasta' files are used. USE WITH CAUTION: Clustering time and/or success will depend on the size of your assembly files, it should be safe to use if you assembled captured data, RNAseq reads, or even genome skimming data.
+    After clustering has been completed, only the clusters with at least '--cl_min_samples' will be considered and a single representative sequence from each cluster will be selected to create a new reference file to perform a final DNA marker extraction across all samples. The extraction of these new markers is done with the same settings chosen for miscellaneous DNA markers.
+
+Skipping clustering step... (to enable use '--cluster_leftovers', and verify that all the software dependencies are correctly installed)
+
+
+
+Statistics Summarization (2026-02-08 21:01:36)
+----------------------------------------------
+    Now Captus will collect the extraction statistics from each sample to compile a comprehensive table and a HTML report for visualization of extraction statistics.
+
+    Extraction statistics: /scratch/tmp/cgranados/mextol_concept/03_extractions/captus-extract_stats.tsv
+
+    Generating Marker Extraction report...
+
+        Extraction report: /scratch/tmp/cgranados/mextol_concept/03_extractions/captus-extract_report.html
+                           Report generated in 0.717s
+
+
+
+Captus-assembly: EXTRACT -> successfully completed [9m 16.0s (555.962s)] (2026-02-08 21:01:38)
+----------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Starting Captus-assembly: EXTRACT (2026-02-08 22:12:23)
+-------------------------------------------------------
+    Welcome to the marker extraction step of Captus-assembly. In this step, Captus will use Scipio to search within your FASTA assemblies and recover any set of reference proteins provided through '--nuc_refs', '--ptd_refs', and/or '--mit_refs'. Captus includes some reference protein sets to work with Plants like the 'Angiosperms353' protein set for nuclear genes, and two organellar protein reference sets 'SeedPlantsPTD' for plastids, and 'SeedPlantsMIT' for mitochondria.
+    If you have references that are not proteins (e.g. non-coding regions, gene sequences including introns, full mRNAs, etc.) You can provide these miscellaneous DNA references with '--dna_refs' and Captus will use BLAT to find and extract matches in your assemblies.
+    Finally, if you want to explore the usefulness of the contigs that were not hit by any protein or other DNA references after the Captus' extraction process, or simply if you do not have reference sets to test, you can try the option '--cluster_leftovers' to attempt sequence clustering across samples in order to discover homologous markers.
+    For more information, please see https://github.com/edgardomortiz/Captus
+
+           Captus version: v1.6.1
+                  Command: /usr/local/bin/captus extract -a 02_assemblies/ -n Ananas_comosus_AllKits_TargetFile.fasta --max_locus_overlap 99 --threads 30 --ram 50 --overwrite
+                       OS: Linux-4.18.0-553.8.1.el8_10.x86_64-x86_64-with-glibc2.36
+                     Host: node25.cluster
+                 Max. RAM: 50.0GB (out of 1511.6GB)
+             Max. Threads: 30 (out of 192)
+
+             Dependencies:
+                Scipio   : v1.4.1 OK
+                ├─BioPerl: v1.7.8 OK
+                └─YAML   : v1.30 OK
+                BLAT     : v37x1 OK
+                MMseqs2  : not used
+                MAFFT    : not used
+
+         Python libraries:
+                    numpy: v2.3.4 OK
+                   pandas: v2.3.3 OK
+                   plotly: v6.4.0 OK
+
+    Captus assemblies dir: /scratch/tmp/cgranados/mextol_concept/02_assemblies
+                           VALID Captus assemblies directory with 9 samples and 9 'assembly.fasta' files
+
+   Total assemblies found: 9
+
+         Output directory: /scratch/tmp/cgranados/mextol_concept/03_extractions
+                           Output directory already exists and files may be overwritten
+
+
+
+Protein and DNA Markers Extraction from FASTA assemblies (2026-02-08 22:12:26)
+------------------------------------------------------------------------------
+    Now Captus will search within your FASTA assemblies for the set of reference proteins provided by '--nuc_refs', '--ptd_refs', and/or '--mit_refs' and extract the sequences both in nucleotide and translated to aminoacid using the specified '--nuc_transtable', '--ptd_transtable' and '--mit_transtable' respectively.
+    Additionally, miscellaneous DNA references provided with '--dna_refs' will also be extracted.
+
+Verifying protein reference sets...
+Translated 'Ananas_comosus_AllKits_TargetFile.fasta' using Genetic Code: 1 [0.628s]
+WARNING: Premature stop codons were found in Ananas_comosus_AllKits_TargetFile.fasta and automatically converted to X
+
+          PROTEIN OPTIONS:
+  Max. loci for Scipio x2: 2000
+  Predict dubious introns: False
+   Concurrent extractions: 7
+       RAM per extraction: 7.1GB
+   Threads per extraction: 4
+
+         Nuclear proteins:
+                reference: /scratch/tmp/cgranados/mextol_concept/Ananas_comosus_AllKits_TargetFile.captus.faa (Translated from Ananas_comosus_AllKits_TargetFile.fasta)
+           reference info: 855 loci, 855 sequences (loci names found, detected a single sequence per locus)
+        translation table: 1
+                min_score: 0.13
+             min_identity: 65
+             min_coverage: 20
+          depth_tolerance: 2.0 (min = 10^(log(depth of the contig with best hit in locus) / 2.0))
+
+      Plastidial proteins:
+                reference: not used
+
+   Mitochondrial proteins:
+                reference: not used
+
+
+MISCELLANEOUS DNA OPTIONS:
+                reference: not used
+
+
+           OUTPUT OPTIONS:
+ Ignore depth of coverage: False
+ Disable contig stitching: False
+       Max. locus overlap: 99.0%
+        Paralog tolerance: 1.5
+            Max. paralogs: -1 (Keep all paralogs)
+ Max. separate loci files: 0 (Do not write separate loci files per sample)
+          Overwrite files: True
+           Keep all files: False
+
+       Samples to process: 9
+   Extractions to process: 9 protein and 0 nucleotide
+
+         Nuclear proteins: /scratch/tmp/cgranados/mextol_concept/03_extractions/[Sample_name]__captus-ext/01_coding_NUC
+     Annotated assemblies: /scratch/tmp/cgranados/mextol_concept/03_extractions/[Sample_name]__captus-ext/06_assembly_annotated
+                           (These output directories will be created for each sample)
+
+ Paths to references used: /scratch/tmp/cgranados/mextol_concept/03_extractions/captus-extract_refs.json
+
+Extracting protein-coding markers with Scipio:
+'T1422': recovered 699 nuclear genes (81.8% of 855), 56.7% of total reference length, 141 paralogs found [21.270s]
+'T1586': recovered 600 nuclear genes (70.2% of 855), 47.7% of total reference length, 217 paralogs found [21.860s]
+'T1585': recovered 579 nuclear genes (67.7% of 855), 46.4% of total reference length, 325 paralogs found [16.912s]
+'T1539': recovered 559 nuclear genes (65.4% of 855), 45.0% of total reference length, 25 paralogs found [16.758s]
+'T1425': recovered 700 nuclear genes (81.9% of 855), 57.5% of total reference length, 42 paralogs found [46.134s]
+'Deuterocohnia_longipetala': recovered 548 nuclear genes (64.1% of 855), 69.7% of total reference length, 294 paralogs found [57.370s]
+'SRR13700302': recovered 729 nuclear genes (85.3% of 855), 68.4% of total reference length, 34 paralogs found [1m 11.7s (71.718s)]
+'T1445': recovered 799 nuclear genes (93.5% of 855), 72.8% of total reference length, 39 paralogs found [1m 40.8s (100.834s)]
+'SRR27284165': recovered 810 nuclear genes (94.7% of 855), 86.4% of total reference length, 33 paralogs found [10m 16.7s (616.700s)]
+ └─→ Protein-coding markers: finished processing for 9 extraction(s) [10m 17.1s (617.130s)]
+
+Merging GFFs, summarizing recovery stats, and cleaning up:
+'T1585': GFF annotations and recovery stats merged, unnecessary files removed [2.398s]
+'T1539': GFF annotations and recovery stats merged, unnecessary files removed [2.495s]
+'T1586': GFF annotations and recovery stats merged, unnecessary files removed [2.616s]
+'Deuterocohnia_longipetala': GFF annotations and recovery stats merged, unnecessary files removed [3.494s]
+'T1422': GFF annotations and recovery stats merged, unnecessary files removed [3.626s]
+'T1425': GFF annotations and recovery stats merged, unnecessary files removed [4.630s]
+'T1445': GFF annotations and recovery stats merged, unnecessary files removed [7.784s]
+'SRR13700302': GFF annotations and recovery stats merged, unnecessary files removed [9.768s]
+'SRR27284165': GFF annotations and recovery stats merged, unnecessary files removed [17.202s]
+ └─→ Merged GFF and summary recovery stats created for 9 sample(s) [17.654s]
+
+
+
+Clustering and Extracting Markers Across Samples with MMseqs2/BLAT (2026-02-08 22:23:02)
+----------------------------------------------------------------------------------------
+    Now Captus will cluster the assembly sequences across samples to discover homologous markers. If protein and/or miscellaneous DNA references sequences were extracted in the previous step, the '06_assembly_annotated/leftover_contigs.fasta.gz' files from each sample will be used for clustering, otherwise the '01_assembly/assembly.fasta' files are used. USE WITH CAUTION: Clustering time and/or success will depend on the size of your assembly files, it should be safe to use if you assembled captured data, RNAseq reads, or even genome skimming data.
+    After clustering has been completed, only the clusters with at least '--cl_min_samples' will be considered and a single representative sequence from each cluster will be selected to create a new reference file to perform a final DNA marker extraction across all samples. The extraction of these new markers is done with the same settings chosen for miscellaneous DNA markers.
+
+Skipping clustering step... (to enable use '--cluster_leftovers', and verify that all the software dependencies are correctly installed)
+
+
+
+Statistics Summarization (2026-02-08 22:23:02)
+----------------------------------------------
+    Now Captus will collect the extraction statistics from each sample to compile a comprehensive table and a HTML report for visualization of extraction statistics.
+
+    Extraction statistics: /scratch/tmp/cgranados/mextol_concept/03_extractions/captus-extract_stats.tsv
+
+    Generating Marker Extraction report...
+
+        Extraction report: /scratch/tmp/cgranados/mextol_concept/03_extractions/captus-extract_report.html
+                           Report generated in 0.754s
+
+
+
+Captus-assembly: EXTRACT -> successfully completed [10m 39.8s (639.757s)] (2026-02-08 22:23:03)
+-----------------------------------------------------------------------------------------------
+
