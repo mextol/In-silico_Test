@@ -25,7 +25,7 @@ Assembly of raw data, loci extraction and sequence alignments were carried out u
 captus assemble -r raw_data/ -o 02_assemblies/
 ```
 
-2. Loci were extracted from assemblies using the [target file](target_file/Ananas_comosus_AllKits_TargetFile.fasta) with *Ananas comosus* sequences (go to [captus_logs](captus_logs/) directory for more details on loci recovery stats).
+2. Loci were extracted from assemblies using the [target file](target_file/Ananas_comosus_AllKits_TargetFile.fasta) with *Ananas comosus* sequences (go to [captus_logs](https://github.com/mextol/In-silico_Test/tree/main/captus_logs) directory for more details on loci recovery stats).
 
 ```{bash}
 captus extract \
