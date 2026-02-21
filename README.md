@@ -56,7 +56,7 @@ astral4 -i mextol-concept.treefile \
 -o speciestree.tre -t 8 -R
 ```
 
-A **summary** of the loci recovery stats and the resulting topology of the [species tree](species_tree/speciestree.tre) is displayed on the following figure.
+A **summary** of the loci [recovery stats](captus_logs/captus-extract_stats.tsv) and the resulting topology of the [species tree](species_tree/speciestree.tre) is displayed on the following figure.
 
 <p align="center">
 <img src="figures/MexTolFig-01.png" width="600">
