@@ -1,7 +1,7 @@
 # 🧬 MexTOL
 
 Three main universal **enrichment kits** exist for major land plant lineages, angiosperms: **Angiosperms353** kit of Johnson et al. (2019) and the **Angiosperm v.1** kit of Buddenhagen et al. (2016); and flagellate land plant lineages and gymnosperms: **GoFlag 451** and its optimized version GoFlag 408 (Breinholt et al., 2021). We propose to merge those kits towards a **universal land plant kit**, that maximizes the inclusion of target regions from the above-mentioned universal plant kits.
-## 🧬💻 Biofinromatic overview
+## 🧬💻 Bioinformatic overview
 
 An ***in-silico*** **test** was performed on the subfamily Pitcairnioideae (except for the outgroup *Tillandsia schiedeana*) of the monocot family Bromeliaceae (Poales) to evaluate the performance of the proposed merged universal land plant kit in terms of loci recovery.
 
